@@ -29,6 +29,16 @@ chapter9/
 
 ## 🚀 快速开始
 
+### 0. 安装依赖
+
+运行示例代码前，请先安装 `hello-agents` 包：
+
+```bash
+pip install hello-agents
+```
+
+> ⚠️ **不要**直接从仓库目录运行代码，应在任意目录下运行。
+
 ### 1. 配置嵌入模型
 
 所有使用记忆功能的示例都需要配置嵌入模型。最简单的方式：
@@ -158,7 +168,7 @@ huggingface-cli login
 os.environ['HF_TOKEN'] = 'hf_your_token_here'
 
 # 方式三：命令行设置
-export HF_TOKEN="hf_your_token_here"
+export HF_TOKEN="hf_you...here"
 ```
 
 #### 方案三：通义千问 DashScope（推荐用于生产环境）
@@ -167,7 +177,7 @@ export HF_TOKEN="hf_your_token_here"
 import os
 os.environ['EMBED_MODEL_TYPE'] = 'dashscope'
 os.environ['EMBED_MODEL_NAME'] = 'text-embedding-v3'
-os.environ['EMBED_API_KEY'] = 'your_dashscope_api_key'
+os.environ['DASHSCOPE_API_KEY'] = 'your_dashscope_api_key'
 ```
 
 **需要**：
@@ -194,7 +204,6 @@ llm = HelloAgentsLLM(
 ```
 建议直接在'.env'文件中设置。
     
-
 
 ### 记忆功能配置
 
@@ -243,7 +252,13 @@ docker run -p 6333:6333 qdrant/qdrant
 
 ## 🐛 常见问题
 
-### Q1: RuntimeError: 所有嵌入模型都不可用
+### Q1: ModuleNotFoundError: No module named 'hello_agents'
+
+**原因**：未安装 `hello-agents` 包。
+
+**解决**：运行 `pip install hello-agents` 后再运行代码。
+
+### Q2: RuntimeError: 所有嵌入模型都不可用
 
 **原因**：嵌入模型配置不正确。
 
@@ -321,4 +336,3 @@ docker run -p 6333:6333 qdrant/qdrant
 ## 🤝 贡献
 
 如有问题或建议，欢迎提 Issue 或 PR！
-
